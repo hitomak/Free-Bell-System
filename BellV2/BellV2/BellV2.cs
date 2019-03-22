@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -43,6 +44,7 @@ namespace BellV2
 
             for (int i = 0; i < AmountOfSound; i++)
             {
+
                 AutoGenerateLabel[i] = new Label();
                 AutoGenerateLabel[i].AutoSize = true;
                 AutoGenerateLabel[i].Location = new Point(4, 85+HeightDiff);
@@ -83,6 +85,7 @@ namespace BellV2
                 AutoGenerateButton[i, 2].UseVisualStyleBackColor = true;
 
                 tableindex = tableindex + 1;
+                HeightDiff = HeightDiff+30;
 
                 Sounds.Controls.Add(AutoGenerateLabel[i]);
                 Sounds.Controls.Add(AutoGenerateButton[i, 0]);
@@ -111,18 +114,17 @@ namespace BellV2
 
                 eror.Text = i.ToString()+" "+ tableindex.ToString();
 
-                HeightDiff = +30;
-
                 if (i == AmountOfSound)
                 {
                     eror.Text = i.ToString();
                     return true; }
-            };
+            }
             return false;
         }
 
         public bool GetDefaultConfigurations()
         {
+            AmountOfSound = ConfigurationManager.ConnectionStrings{Get};
             return true;
         }//Get Default Settings from Config File
 
