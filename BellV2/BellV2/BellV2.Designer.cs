@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Main = new System.Windows.Forms.TabPage();
+            this.StopMusic = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.ChangeNBell = new System.Windows.Forms.Button();
+            this.Change = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.ToDaysBellStatus = new System.Windows.Forms.Label();
             this.TimeToNextBell = new System.Windows.Forms.Label();
@@ -43,24 +47,29 @@
             this.CurrentTime = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.TimeTables = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             this.AddTimeTable = new System.Windows.Forms.TabControl();
             this.TimeTable1 = new System.Windows.Forms.TabPage();
-            this.AddTimeTableTab = new System.Windows.Forms.TabPage();
-            this.Sounds = new System.Windows.Forms.TabPage();
-            this.Settings = new System.Windows.Forms.TabPage();
-            this.AddMoreTimeTable = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.AmountOfBellTTable = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.ChoseTheSound = new System.Windows.Forms.Button();
-            this.SaveTheSound = new System.Windows.Forms.Button();
-            this.l1 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.AmountOfBellTTable = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.AddTimeTableTab = new System.Windows.Forms.TabPage();
+            this.AddMoreTimeTable = new System.Windows.Forms.Button();
+            this.Sounds = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.eror = new System.Windows.Forms.Label();
             this.ChosedSound = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.SaveDays = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.l1 = new System.Windows.Forms.Label();
+            this.SaveTheSound = new System.Windows.Forms.Button();
+            this.ChoseTheSound = new System.Windows.Forms.Button();
+            this.Settings = new System.Windows.Forms.TabPage();
+            this.DaysToRing = new System.Windows.Forms.CheckedListBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.SaveDays = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tabControl1.SuspendLayout();
@@ -87,6 +96,10 @@
             // 
             // Main
             // 
+            this.Main.Controls.Add(this.StopMusic);
+            this.Main.Controls.Add(this.label13);
+            this.Main.Controls.Add(this.ChangeNBell);
+            this.Main.Controls.Add(this.Change);
             this.Main.Controls.Add(this.label7);
             this.Main.Controls.Add(this.ToDaysBellStatus);
             this.Main.Controls.Add(this.TimeToNextBell);
@@ -104,6 +117,43 @@
             this.Main.TabIndex = 0;
             this.Main.Text = "Main";
             this.Main.UseVisualStyleBackColor = true;
+            // 
+            // StopMusic
+            // 
+            this.StopMusic.Location = new System.Drawing.Point(447, 49);
+            this.StopMusic.Name = "StopMusic";
+            this.StopMusic.Size = new System.Drawing.Size(75, 23);
+            this.StopMusic.TabIndex = 14;
+            this.StopMusic.Text = "Stop Music";
+            this.StopMusic.UseVisualStyleBackColor = true;
+            this.StopMusic.Click += new System.EventHandler(this.StopMusic_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(321, 4);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(91, 13);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "Developper Tools";
+            // 
+            // ChangeNBell
+            // 
+            this.ChangeNBell.Location = new System.Drawing.Point(447, 19);
+            this.ChangeNBell.Name = "ChangeNBell";
+            this.ChangeNBell.Size = new System.Drawing.Size(160, 23);
+            this.ChangeNBell.TabIndex = 12;
+            this.ChangeNBell.Text = "Change Next Bell";
+            this.ChangeNBell.UseVisualStyleBackColor = true;
+            this.ChangeNBell.Click += new System.EventHandler(this.ChangeNBell_Click);
+            // 
+            // Change
+            // 
+            this.Change.Location = new System.Drawing.Point(321, 23);
+            this.Change.Name = "Change";
+            this.Change.Size = new System.Drawing.Size(100, 20);
+            this.Change.TabIndex = 11;
+            this.Change.Text = "00:00:00";
             // 
             // label7
             // 
@@ -221,10 +271,19 @@
             this.TimeTables.Controls.Add(this.AddTimeTable);
             this.TimeTables.Location = new System.Drawing.Point(4, 22);
             this.TimeTables.Name = "TimeTables";
-            this.TimeTables.Size = new System.Drawing.Size(752, 511);
+            this.TimeTables.Size = new System.Drawing.Size(752, 487);
             this.TimeTables.TabIndex = 1;
             this.TimeTables.Text = "Time Tables";
             this.TimeTables.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(9, 481);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(740, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Click Here To Save The Time Tables";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // AddTimeTable
             // 
@@ -250,51 +309,22 @@
             this.TimeTable1.Text = "Time Table 1";
             this.TimeTable1.UseVisualStyleBackColor = true;
             // 
-            // AddTimeTableTab
+            // label9
             // 
-            this.AddTimeTableTab.Controls.Add(this.AddMoreTimeTable);
-            this.AddTimeTableTab.Location = new System.Drawing.Point(4, 22);
-            this.AddTimeTableTab.Name = "AddTimeTableTab";
-            this.AddTimeTableTab.Padding = new System.Windows.Forms.Padding(3);
-            this.AddTimeTableTab.Size = new System.Drawing.Size(752, 453);
-            this.AddTimeTableTab.TabIndex = 1;
-            this.AddTimeTableTab.Text = ".....";
-            this.AddTimeTableTab.UseVisualStyleBackColor = true;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 35);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(342, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Please add the bell times in order? Use this fromat 15:15:00/HH:mm:ss ";
             // 
-            // Sounds
+            // AmountOfBellTTable
             // 
-            this.Sounds.Controls.Add(this.ChosedSound);
-            this.Sounds.Controls.Add(this.label11);
-            this.Sounds.Controls.Add(this.l1);
-            this.Sounds.Controls.Add(this.SaveTheSound);
-            this.Sounds.Controls.Add(this.ChoseTheSound);
-            this.Sounds.Location = new System.Drawing.Point(4, 22);
-            this.Sounds.Name = "Sounds";
-            this.Sounds.Size = new System.Drawing.Size(752, 511);
-            this.Sounds.TabIndex = 2;
-            this.Sounds.Text = "Sounds";
-            this.Sounds.UseVisualStyleBackColor = true;
-            // 
-            // Settings
-            // 
-            this.Settings.Controls.Add(this.label12);
-            this.Settings.Controls.Add(this.SaveDays);
-            this.Settings.Controls.Add(this.label10);
-            this.Settings.Location = new System.Drawing.Point(4, 22);
-            this.Settings.Name = "Settings";
-            this.Settings.Size = new System.Drawing.Size(752, 511);
-            this.Settings.TabIndex = 3;
-            this.Settings.Text = "Settings";
-            this.Settings.UseVisualStyleBackColor = true;
-            // 
-            // AddMoreTimeTable
-            // 
-            this.AddMoreTimeTable.Location = new System.Drawing.Point(7, 7);
-            this.AddMoreTimeTable.Name = "AddMoreTimeTable";
-            this.AddMoreTimeTable.Size = new System.Drawing.Size(165, 23);
-            this.AddMoreTimeTable.TabIndex = 0;
-            this.AddMoreTimeTable.Text = "Add More Time Table";
-            this.AddMoreTimeTable.UseVisualStyleBackColor = true;
+            this.AmountOfBellTTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AmountOfBellTTable.Location = new System.Drawing.Point(315, 6);
+            this.AmountOfBellTTable.Name = "AmountOfBellTTable";
+            this.AmountOfBellTTable.Size = new System.Drawing.Size(100, 26);
+            this.AmountOfBellTTable.TabIndex = 1;
             // 
             // label8
             // 
@@ -306,67 +336,83 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "How many bell do you want to ring? : ";
             // 
-            // AmountOfBellTTable
+            // AddTimeTableTab
             // 
-            this.AmountOfBellTTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AmountOfBellTTable.Location = new System.Drawing.Point(315, 6);
-            this.AmountOfBellTTable.Name = "AmountOfBellTTable";
-            this.AmountOfBellTTable.Size = new System.Drawing.Size(100, 26);
-            this.AmountOfBellTTable.TabIndex = 1;
+            this.AddTimeTableTab.Controls.Add(this.AddMoreTimeTable);
+            this.AddTimeTableTab.Location = new System.Drawing.Point(4, 22);
+            this.AddTimeTableTab.Name = "AddTimeTableTab";
+            this.AddTimeTableTab.Padding = new System.Windows.Forms.Padding(3);
+            this.AddTimeTableTab.Size = new System.Drawing.Size(752, 453);
+            this.AddTimeTableTab.TabIndex = 1;
+            this.AddTimeTableTab.Text = ".....";
+            this.AddTimeTableTab.UseVisualStyleBackColor = true;
             // 
-            // label9
+            // AddMoreTimeTable
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 35);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(342, 13);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Please add the bell times in order? Use this fromat 15:15:00/HH:mm:ss ";
+            this.AddMoreTimeTable.Location = new System.Drawing.Point(7, 7);
+            this.AddMoreTimeTable.Name = "AddMoreTimeTable";
+            this.AddMoreTimeTable.Size = new System.Drawing.Size(165, 23);
+            this.AddMoreTimeTable.TabIndex = 0;
+            this.AddMoreTimeTable.Text = "Add More Time Table";
+            this.AddMoreTimeTable.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // Sounds
             // 
-            this.button2.Location = new System.Drawing.Point(9, 481);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(740, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Click Here To Save The Time Tables";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Sounds.Controls.Add(this.label17);
+            this.Sounds.Controls.Add(this.label16);
+            this.Sounds.Controls.Add(this.label15);
+            this.Sounds.Controls.Add(this.eror);
+            this.Sounds.Controls.Add(this.ChosedSound);
+            this.Sounds.Controls.Add(this.label11);
+            this.Sounds.Controls.Add(this.l1);
+            this.Sounds.Controls.Add(this.SaveTheSound);
+            this.Sounds.Controls.Add(this.ChoseTheSound);
+            this.Sounds.Location = new System.Drawing.Point(4, 22);
+            this.Sounds.Name = "Sounds";
+            this.Sounds.Size = new System.Drawing.Size(752, 487);
+            this.Sounds.TabIndex = 2;
+            this.Sounds.Text = "Sounds";
+            this.Sounds.UseVisualStyleBackColor = true;
             // 
-            // ChoseTheSound
+            // label17
             // 
-            this.ChoseTheSound.Location = new System.Drawing.Point(3, 20);
-            this.ChoseTheSound.Name = "ChoseTheSound";
-            this.ChoseTheSound.Size = new System.Drawing.Size(126, 23);
-            this.ChoseTheSound.TabIndex = 0;
-            this.ChoseTheSound.Text = "Chose The Sound";
-            this.ChoseTheSound.UseVisualStyleBackColor = true;
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(341, 58);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(63, 20);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Assign";
             // 
-            // SaveTheSound
+            // label16
             // 
-            this.SaveTheSound.Location = new System.Drawing.Point(135, 20);
-            this.SaveTheSound.Name = "SaveTheSound";
-            this.SaveTheSound.Size = new System.Drawing.Size(114, 23);
-            this.SaveTheSound.TabIndex = 1;
-            this.SaveTheSound.Text = "Save The sound";
-            this.SaveTheSound.UseVisualStyleBackColor = true;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(282, 58);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(47, 20);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Stop";
             // 
-            // l1
+            // label15
             // 
-            this.l1.AutoSize = true;
-            this.l1.Location = new System.Drawing.Point(3, 4);
-            this.l1.Name = "l1";
-            this.l1.Size = new System.Drawing.Size(77, 13);
-            this.l1.TabIndex = 2;
-            this.l1.Text = "Chosed Sound";
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(220, 58);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(42, 20);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "Play";
             // 
-            // label11
+            // eror
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(86, 4);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(10, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = ":";
+            this.eror.AutoSize = true;
+            this.eror.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eror.Location = new System.Drawing.Point(19, 58);
+            this.eror.Name = "eror";
+            this.eror.Size = new System.Drawing.Size(61, 20);
+            this.eror.TabIndex = 6;
+            this.eror.Text = "Sound";
             // 
             // ChosedSound
             // 
@@ -377,23 +423,74 @@
             this.ChosedSound.TabIndex = 5;
             this.ChosedSound.Text = "ChosedSound";
             // 
-            // label10
+            // label11
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(39, 61);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(118, 13);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Chose days to ring bells";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(86, 4);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(10, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = ":";
             // 
-            // SaveDays
+            // l1
             // 
-            this.SaveDays.Location = new System.Drawing.Point(164, 50);
-            this.SaveDays.Name = "SaveDays";
-            this.SaveDays.Size = new System.Drawing.Size(75, 23);
-            this.SaveDays.TabIndex = 1;
-            this.SaveDays.Text = "Save";
-            this.SaveDays.UseVisualStyleBackColor = true;
+            this.l1.AutoSize = true;
+            this.l1.Location = new System.Drawing.Point(3, 4);
+            this.l1.Name = "l1";
+            this.l1.Size = new System.Drawing.Size(77, 13);
+            this.l1.TabIndex = 2;
+            this.l1.Text = "Chosed Sound";
+            // 
+            // SaveTheSound
+            // 
+            this.SaveTheSound.Location = new System.Drawing.Point(135, 20);
+            this.SaveTheSound.Name = "SaveTheSound";
+            this.SaveTheSound.Size = new System.Drawing.Size(114, 23);
+            this.SaveTheSound.TabIndex = 1;
+            this.SaveTheSound.Text = "Save The sound";
+            this.SaveTheSound.UseVisualStyleBackColor = true;
+            this.SaveTheSound.Click += new System.EventHandler(this.SaveTheSound_Click);
+            // 
+            // ChoseTheSound
+            // 
+            this.ChoseTheSound.Location = new System.Drawing.Point(3, 20);
+            this.ChoseTheSound.Name = "ChoseTheSound";
+            this.ChoseTheSound.Size = new System.Drawing.Size(126, 23);
+            this.ChoseTheSound.TabIndex = 0;
+            this.ChoseTheSound.Text = "Chose The Sound";
+            this.ChoseTheSound.UseVisualStyleBackColor = true;
+            this.ChoseTheSound.Click += new System.EventHandler(this.ChoseTheSound_Click);
+            // 
+            // Settings
+            // 
+            this.Settings.Controls.Add(this.DaysToRing);
+            this.Settings.Controls.Add(this.label12);
+            this.Settings.Controls.Add(this.SaveDays);
+            this.Settings.Controls.Add(this.label10);
+            this.Settings.Location = new System.Drawing.Point(4, 22);
+            this.Settings.Name = "Settings";
+            this.Settings.Size = new System.Drawing.Size(752, 487);
+            this.Settings.TabIndex = 3;
+            this.Settings.Text = "Settings";
+            this.Settings.UseVisualStyleBackColor = true;
+            // 
+            // DaysToRing
+            // 
+            this.DaysToRing.ColumnWidth = 45;
+            this.DaysToRing.FormattingEnabled = true;
+            this.DaysToRing.Items.AddRange(new object[] {
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+            "Sun"});
+            this.DaysToRing.Location = new System.Drawing.Point(218, 9);
+            this.DaysToRing.MultiColumn = true;
+            this.DaysToRing.Name = "DaysToRing";
+            this.DaysToRing.Size = new System.Drawing.Size(327, 19);
+            this.DaysToRing.TabIndex = 3;
             // 
             // label12
             // 
@@ -404,6 +501,25 @@
             this.label12.TabIndex = 2;
             this.label12.Text = "Days time Table save\r\nWeek days,  Specific Days.\r\nDays\t\tDay Picker\r\nSave\r\nAdd exc" +
     "eptional days to not ring save\r\n";
+            // 
+            // SaveDays
+            // 
+            this.SaveDays.Location = new System.Drawing.Point(382, 134);
+            this.SaveDays.Name = "SaveDays";
+            this.SaveDays.Size = new System.Drawing.Size(75, 23);
+            this.SaveDays.TabIndex = 1;
+            this.SaveDays.Text = "Save";
+            this.SaveDays.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(12, 8);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(210, 20);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Chose days to ring bells :";
             // 
             // Timer
             // 
@@ -481,5 +597,14 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Timer Timer;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.CheckedListBox DaysToRing;
+        private System.Windows.Forms.Button StopMusic;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button ChangeNBell;
+        private System.Windows.Forms.TextBox Change;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label eror;
     }
 }
