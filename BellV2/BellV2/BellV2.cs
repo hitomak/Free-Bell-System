@@ -25,6 +25,7 @@ namespace BellV2
         public int NBellID = 0;             //Contains Nbells ID
         public bool IfBellRinged = false;    //Controling the bell rings and with this changing the Next Bell Time
         public int LastBell = 20;            //Last bell for today
+        public String[] SoundFiles;
 
         public string MainFolder = Application.StartupPath;
 
@@ -124,7 +125,9 @@ namespace BellV2
 
         public bool GetDefaultConfigurations()
         {
-            AmountOfSound = ConfigurationManager.ConnectionStrings{Get};
+            AmountOfSound = int.Parse(ConfigurationManager.AppSettings.Get("AmountOfSoundFiles"));
+            SoundFiles[] = string[AmountOfSound];
+
             return true;
         }//Get Default Settings from Config File
 
