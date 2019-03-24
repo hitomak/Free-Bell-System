@@ -38,10 +38,8 @@ namespace BellV2
             
         }
 
-        public bool GenerateSoundList
+        public bool GenerateSoundList()
         {
-            get
-            {
                 Label[] AutoGenerateLabel = new Label[AmountOfSound];
                 Button[,] AutoGenerateButton = new Button[AmountOfSound, 3];
                 int HeightDiff = 0;
@@ -130,7 +128,6 @@ namespace BellV2
                         eror.Text = i.ToString();
                         return true;
                     }
-                }
                 return false;
             }
         }
@@ -139,7 +136,7 @@ namespace BellV2
         {
             AmountOfSound = int.Parse(ConfigurationManager.AppSettings.Get("AmountOfSoundFiles"));
 
-            if (GenerateSoundList)
+            if (GenerateSoundList())
             {
                 eror.Text = "Bisey yanlis gitti";
             }
