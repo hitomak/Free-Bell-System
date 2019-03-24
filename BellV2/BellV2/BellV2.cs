@@ -25,108 +25,124 @@ namespace BellV2
         public int NBellID = 0;             //Contains Nbells ID
         public bool IfBellRinged = false;    //Controling the bell rings and with this changing the Next Bell Time
         public int LastBell = 20;            //Last bell for today
-        public String[] SoundFiles;
+        public string[] SoundFiles;
 
         public string MainFolder = Application.StartupPath;
 
         public BellV2()
         {
             InitializeComponent();
-            if (GenerateSoundList())
-                eror.Text = "Bisey yanlis gitti";
+
+            GetDefaultConfigurations();
+
+            
         }
 
-        public bool GenerateSoundList()
+        public bool GenerateSoundList
         {
-            Label[] AutoGenerateLabel = new Label[AmountOfSound];
-            Button[,] AutoGenerateButton = new Button[AmountOfSound, 3];
-            int HeightDiff = 0;
-            int tableindex = 10;
-
-            for (int i = 0; i < AmountOfSound; i++)
+            get
             {
+                Label[] AutoGenerateLabel = new Label[AmountOfSound];
+                Button[,] AutoGenerateButton = new Button[AmountOfSound, 3];
+                int HeightDiff = 0;
+                int tableindex = 10;
 
-                AutoGenerateLabel[i] = new Label();
-                AutoGenerateLabel[i].AutoSize = true;
-                AutoGenerateLabel[i].Location = new Point(4, 85+HeightDiff);
-                AutoGenerateLabel[i].Name = "AutoGenerateLabel" + i.ToString();
-                AutoGenerateLabel[i].Size = new Size(55, 13);
-                AutoGenerateLabel[i].TabIndex = tableindex;
-                AutoGenerateLabel[i].Text = "AutoLabel"+i.ToString();
-                AutoGenerateLabel[i].Visible = true;
+                SoundFiles = new string[AmountOfSound];
 
-                tableindex = tableindex + 1;
-
-                AutoGenerateButton[i, 0] = new Button();
-                AutoGenerateButton[i, 0].Location = new Point(210, 80+HeightDiff);
-                AutoGenerateButton[i, 0].Name = "Play" + i.ToString();
-                AutoGenerateButton[i, 0].Size = new Size(59, 23);
-                AutoGenerateButton[i, 0].TabIndex = tableindex;
-                AutoGenerateButton[i, 0].Text = "Play" + i.ToString();
-                AutoGenerateButton[i, 0].UseVisualStyleBackColor = true;
-
-                tableindex = tableindex + 1;
-
-                AutoGenerateButton[i, 1] = new Button();
-                AutoGenerateButton[i, 1].Location = new Point(275, 80 + HeightDiff);
-                AutoGenerateButton[i, 1].Name = "Stop" + i.ToString();
-                AutoGenerateButton[i, 1].Size = new Size(59, 23);
-                AutoGenerateButton[i, 1].TabIndex = tableindex;
-                AutoGenerateButton[i, 1].Text = "Stop" + i.ToString();
-                AutoGenerateButton[i, 1].UseVisualStyleBackColor = true;
-
-                tableindex = tableindex + 1;
-
-                AutoGenerateButton[i, 2] = new Button();
-                AutoGenerateButton[i, 2].Location = new Point(340, 80 + HeightDiff);
-                AutoGenerateButton[i, 2].Name = "Assign" + i.ToString();
-                AutoGenerateButton[i, 2].Size = new Size(59, 23);
-                AutoGenerateButton[i, 2].TabIndex = tableindex;
-                AutoGenerateButton[i, 2].Text = "Assign" + i.ToString();
-                AutoGenerateButton[i, 2].UseVisualStyleBackColor = true;
-
-                tableindex = tableindex + 1;
-                HeightDiff = HeightDiff+30;
-
-                Sounds.Controls.Add(AutoGenerateLabel[i]);
-                Sounds.Controls.Add(AutoGenerateButton[i, 0]);
-                Sounds.Controls.Add(AutoGenerateButton[i, 1]);
-                Sounds.Controls.Add(AutoGenerateButton[i, 2]);
-                
-                AutoGenerateButton[i, 0].Click += new EventHandler(AutoGenerateButton_Play);
-                AutoGenerateButton[i, 1].Click += new EventHandler(AutoGenerateButton_Stop);
-                AutoGenerateButton[i, 2].Click += new EventHandler(AutoGenerateButton_Assign);
-
-                void AutoGenerateButton_Play(object sender, EventArgs e)
+                for (int i = 0; i < AmountOfSound; i++)
                 {
-                    string OldSoundLocation = Player.SoundLocation;
-                    Player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + "\\Melodi.wav"; //Get it with sound tab
-                    Player.Play();
-                    Player.SoundLocation = OldSoundLocation;
-                }
-                void AutoGenerateButton_Stop(object sender, EventArgs e)
-                {
-                    Player.Stop();
-                }
-                void AutoGenerateButton_Assign(object sender, EventArgs e)
-                {
-                    Player.Stop();
+                    SoundFiles[i] = ConfigurationManager.AppSettings.Get("SoundPath" + i.ToString());
                 }
 
-                eror.Text = i.ToString()+" "+ tableindex.ToString();
-
-                if (i == AmountOfSound)
+                for (int i = 0; i < AmountOfSound; i++)
                 {
-                    eror.Text = i.ToString();
-                    return true; }
+
+                    AutoGenerateLabel[i] = new Label();
+                    AutoGenerateLabel[i].AutoSize = true;
+                    AutoGenerateLabel[i].Location = new Point(4, 85 + HeightDiff);
+                    AutoGenerateLabel[i].Name = "AutoGenerateLabel" + i.ToString();
+                    AutoGenerateLabel[i].Size = new Size(55, 13);
+                    AutoGenerateLabel[i].TabIndex = tableindex;
+                    AutoGenerateLabel[i].Text = SoundFiles[i];
+                    AutoGenerateLabel[i].Visible = true;
+
+                    tableindex = tableindex + 1;
+
+                    AutoGenerateButton[i, 0] = new Button();
+                    AutoGenerateButton[i, 0].Location = new Point(210, 80 + HeightDiff);
+                    AutoGenerateButton[i, 0].Name = "Play" + i.ToString();
+                    AutoGenerateButton[i, 0].Size = new Size(59, 23);
+                    AutoGenerateButton[i, 0].TabIndex = tableindex;
+                    AutoGenerateButton[i, 0].Text = "Play" + i.ToString();
+                    AutoGenerateButton[i, 0].UseVisualStyleBackColor = true;
+
+                    tableindex = tableindex + 1;
+
+                    AutoGenerateButton[i, 1] = new Button();
+                    AutoGenerateButton[i, 1].Location = new Point(275, 80 + HeightDiff);
+                    AutoGenerateButton[i, 1].Name = "Stop" + i.ToString();
+                    AutoGenerateButton[i, 1].Size = new Size(59, 23);
+                    AutoGenerateButton[i, 1].TabIndex = tableindex;
+                    AutoGenerateButton[i, 1].Text = "Stop" + i.ToString();
+                    AutoGenerateButton[i, 1].UseVisualStyleBackColor = true;
+
+                    tableindex = tableindex + 1;
+
+                    AutoGenerateButton[i, 2] = new Button();
+                    AutoGenerateButton[i, 2].Location = new Point(340, 80 + HeightDiff);
+                    AutoGenerateButton[i, 2].Name = "Assign" + i.ToString();
+                    AutoGenerateButton[i, 2].Size = new Size(59, 23);
+                    AutoGenerateButton[i, 2].TabIndex = tableindex;
+                    AutoGenerateButton[i, 2].Text = "Assign" + i.ToString();
+                    AutoGenerateButton[i, 2].UseVisualStyleBackColor = true;
+
+                    tableindex = tableindex + 1;
+                    HeightDiff = HeightDiff + 30;
+
+                    Sounds.Controls.Add(AutoGenerateLabel[i]);
+                    Sounds.Controls.Add(AutoGenerateButton[i, 0]);
+                    Sounds.Controls.Add(AutoGenerateButton[i, 1]);
+                    Sounds.Controls.Add(AutoGenerateButton[i, 2]);
+
+                    AutoGenerateButton[i, 0].Click += new EventHandler(AutoGenerateButton_Play);
+                    AutoGenerateButton[i, 1].Click += new EventHandler(AutoGenerateButton_Stop);
+                    AutoGenerateButton[i, 2].Click += new EventHandler(AutoGenerateButton_Assign);
+
+                    void AutoGenerateButton_Play(object sender, EventArgs e)
+                    {
+                        string OldSoundLocation = Player.SoundLocation;
+                        eror.Text = SoundFiles[i];
+                        Player.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + SoundFiles[i]; //Get it with sound tab
+                        //Player.Play();
+                        Player.SoundLocation = OldSoundLocation;
+                    }
+                    void AutoGenerateButton_Stop(object sender, EventArgs e)
+                    {
+                        Player.Stop();
+                    }
+                    void AutoGenerateButton_Assign(object sender, EventArgs e)
+                    {
+                        Player.Stop();
+                    }
+
+                    if (i == AmountOfSound)
+                    {
+                        eror.Text = i.ToString();
+                        return true;
+                    }
+                }
+                return false;
             }
-            return false;
         }
 
         public bool GetDefaultConfigurations()
         {
             AmountOfSound = int.Parse(ConfigurationManager.AppSettings.Get("AmountOfSoundFiles"));
-            SoundFiles[] = string[AmountOfSound];
+
+            if (GenerateSoundList)
+            {
+                eror.Text = "Bisey yanlis gitti";
+            }
 
             return true;
         }//Get Default Settings from Config File
