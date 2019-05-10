@@ -72,6 +72,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Main.SuspendLayout();
             this.TimeTables.SuspendLayout();
@@ -298,6 +299,7 @@
             // TimeTable1
             // 
             this.TimeTable1.AutoScroll = true;
+            this.TimeTable1.Controls.Add(this.button1);
             this.TimeTable1.Controls.Add(this.label9);
             this.TimeTable1.Controls.Add(this.AmountOfBellTTable);
             this.TimeTable1.Controls.Add(this.label8);
@@ -535,6 +537,15 @@
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(9, 51);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(141, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Add Bell Time";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // BellV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -606,5 +617,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label eror;
+        private System.Windows.Forms.Button button1;
     }
 }
